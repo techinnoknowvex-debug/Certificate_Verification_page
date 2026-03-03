@@ -25,7 +25,7 @@ export async function onRequest(context) {
   const res = await context.next();
   let html = await res.text();
 
-  const verifyUrl = `https://yourdomain.com/verify/${id}`;
+const verifyUrl = `https://verify.innoknowvex.com/verify/${id}`;
 
   html = html.replace(
     "</head>",
