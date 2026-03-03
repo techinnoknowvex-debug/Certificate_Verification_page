@@ -16,7 +16,7 @@ function VerifyPage() {
       const { data, error } = await supabase
         .from("certificates")
         .select("*")
-        .eq("short_id", id)
+        .eq("certificate_id", id)
         .single();
 
       if (error || !data) setError("Certificate not found");
