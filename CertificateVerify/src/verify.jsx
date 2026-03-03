@@ -55,16 +55,25 @@ function VerifyPage() {
     window.open(linkedInUrl, "_blank");
   };
 
+  const formatDate = (dateStr) => {
+    if (!dateStr) return "-";
+    const date = new Date(dateStr);
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen font-sans text-gray-800">
 
       {/* HEADER */}
-      <header className="bg-white shadow-sm border-b py-4 text-center">
+      <header className="bg-gray-200 shadow-sm border-b py-4 text-center">
         <img src={logo} alt="Logo" className="h-10 mx-auto mb-2" />
         <h1 className="font-semibold tracking-wide">
           Innoknowvex Edutech Pvt Ltd
         </h1>
-        <p className="text-xs text-gray-500 uppercase">
+        <p className="text-xs text-gray-600 uppercase">
           Certificate Verification 
         </p>
       </header>
@@ -88,42 +97,48 @@ function VerifyPage() {
             alt="Certificate"
             className="rounded-xl shadow-lg border max-h-[600px]"
           />
-          <p className="mt-4 text-gray-600 text-sm uppercase tracking-wide font-semibold">
+          <p className="mt-8 text-gray-600 text-sm uppercase tracking-wide font-semibold">
             Innoknowvex {data.certificate_type} Certificate
           </p>
         </div>
 
         {/* ISSUANCE DETAILS */}
-        <section className="bg-white p-5 rounded-lg shadow border">
+        <section className="bg-white p-5 rounded-lg shadow border border-orange-200">
           <h3 className="text-orange-500 uppercase text-sm font-semibold mb-4">
             Issuance Details
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <Detail label="Recipient" value={data.name} />
-            <Detail label="Issued By" value={data.issuer} />
-            <Detail label="Issue Date" value={data.issue_date} />
+            <div>
+              <p className="text-xs text-gray-500 uppercase tracking-wider font-medium">Issued By</p>
+              <div className="flex items-center gap-2">
+                <p className="font-semibold text-gray-800 text-sm">{data.issuer}</p>
+                <span className="bg-green-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">✓</span>
+              </div>
+            </div>
+            <Detail label="Issue Date" value={formatDate(data.issue_date)} />
           </div>
         </section>
 
         {/* COURSE DETAILS */}
-        <section className="bg-white p-5 rounded-lg shadow border">
+        <section className="bg-white p-5 rounded-lg shadow border border-orange-200">
           <h3 className="text-orange-500 uppercase text-sm font-semibold mb-4">
             Course Details
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-5">
-            <Detail label="Course Name" value={data.course} />
-            <Detail label="Start Date" value={data.start_date} />
-            <Detail label="End Date" value={data.end_date} />
+            <Detail label="Domain" value={data.course} />
+            <Detail label="Start Date" value={formatDate(data.start_date)} />
+            <Detail label="End Date" value={formatDate(data.end_date)} />
             <Detail label="Duration" value={data.duration} />
           </div>
 
           <p className="text-gray-700 leading-relaxed text-sm">
-            This certificate acknowledges successful completion of the {data.course} course offered by {data.issuer}. The recipient has demonstrated commitment, dedication, and proficiency in the program's curriculum. This certification is a testament to their professional growth and expertise in the subject matter. We are pleased to recognize this outstanding achievement and wish them continued success in their professional endeavors.
+            This certificate acknowledges successful completion of the {data.course} domain offered by {data.issuer}. The recipient has demonstrated commitment, dedication, and proficiency in the program's curriculum. This certification is a testament to their professional growth and expertise in the subject matter. We are pleased to recognize this outstanding achievement and wish them continued success in their professional endeavors.
           </p>
         </section>
 
         {/* SHARE & ACTIONS */}
-        <section className="bg-white p-5 rounded-lg shadow border">
+        <section className="bg-white p-5 rounded-lg shadow border border-orange-200">
           <div className="flex flex-col md:flex-row md:justify-between items-center gap-4">
             <div className="text-center">
               <h3 className="text-orange-500 uppercase text-sm font-semibold mb-3">
