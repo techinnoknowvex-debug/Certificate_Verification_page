@@ -113,9 +113,19 @@ function VerifyPage() {
               <p className="text-xs text-gray-500 uppercase tracking-wider font-medium">Issued By</p>
               <div className="flex items-center gap-2">
                 <p className="font-semibold text-gray-800 text-sm">{data.issuer}</p>
-                <span className="bg-blue-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3">
-                    <path fillRule="evenodd" d="M10 15l-3.5-3.5 1.414-1.414L10 12.172l5.086-5.086 1.414 1.414L10 15z" clipRule="evenodd" />
+                <span className="text-blue-500 w-5 h-5">
+                  {/* Heroicon-style check circle that resembles Meta Verified badge */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="w-full h-full"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.707a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    />
                   </svg>
                 </span>
               </div>
@@ -129,17 +139,23 @@ function VerifyPage() {
           <h3 className="text-orange-500 uppercase text-sm font-semibold mb-4">
             Course Details
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-5">
-            {/* domain & duration grouped so duration stays under domain on small screens */}
+          <div className="md:hidden grid grid-cols-2 gap-4 mb-5">
             <div className="space-y-2">
               <Detail label="Domain" value={data.course} />
-              <Detail label="Duration" value={data.duration} />
-            </div>
-            {/* start and end date grouped to sit side‑by‑side on larger screens */}
-            <div className="space-y-2">
               <Detail label="Start Date" value={formatDate(data.start_date)} />
+              
+            </div>
+            <div className="space-y-2">
+              <Detail label="Duration" value={data.duration} />
               <Detail label="End Date" value={formatDate(data.end_date)} />
             </div>
+          </div>
+
+          <div className="hidden md:grid grid-cols-4 gap-4 mb-5">
+            <Detail label="Domain" value={data.course} />
+            <Detail label="Start Date" value={formatDate(data.start_date)} />
+            <Detail label="End Date" value={formatDate(data.end_date)} />
+            <Detail label="Duration" value={data.duration} />
           </div>
 
           <p className="text-gray-700 leading-relaxed text-sm">
@@ -221,7 +237,11 @@ function VerifyPage() {
           >
             Validate Certificate
           </button>
-          <p className="mt-2 text-blue-600 text-sm">innoknowvex.in</p>
+          <p className="mt-2 text-blue-600 text-sm">
+            <a href="https://innoknowvex.in" target="_blank" rel="noopener noreferrer">
+              https://innoknowvex.in
+            </a>
+          </p>
         </section>
 
       </main>
