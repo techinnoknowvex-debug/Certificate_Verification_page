@@ -129,11 +129,17 @@ function VerifyPage() {
           <h3 className="text-orange-500 uppercase text-sm font-semibold mb-4">
             Course Details
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-5">
-            <Detail label="Domain" value={data.course} />
-            <Detail label="Start Date" value={formatDate(data.start_date)} />
-            <Detail label="End Date" value={formatDate(data.end_date)} />
-            <Detail label="Duration" value={data.duration} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-5">
+            {/* domain & duration grouped so duration stays under domain on small screens */}
+            <div className="space-y-2">
+              <Detail label="Domain" value={data.course} />
+              <Detail label="Duration" value={data.duration} />
+            </div>
+            {/* start and end date grouped to sit side‑by‑side on larger screens */}
+            <div className="space-y-2">
+              <Detail label="Start Date" value={formatDate(data.start_date)} />
+              <Detail label="End Date" value={formatDate(data.end_date)} />
+            </div>
           </div>
 
           <p className="text-gray-700 leading-relaxed text-sm">
