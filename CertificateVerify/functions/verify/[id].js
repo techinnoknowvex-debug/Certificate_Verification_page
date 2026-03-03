@@ -33,11 +33,10 @@ export async function onRequest(context) {
 
     const verifyUrl = `https://verify.innoknowvex.com/verify/${id}`;
 
-    // Fetch your actual React index.html
     const htmlResponse = await fetch("https://verify.innoknowvex.com/index.html");
     let html = await htmlResponse.text();
 
-    // Inject meta tags
+  
     html = html.replace(
       "</head>",
       `

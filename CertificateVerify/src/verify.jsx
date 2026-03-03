@@ -67,7 +67,7 @@ function VerifyPage() {
   return (
     <div className="bg-gray-50 min-h-screen font-sans text-gray-800">
 
-      {/* HEADER */}
+   
       <header className="bg-gray-200 shadow-sm border-b py-4 text-center">
         <img src={logo} alt="Logo" className="h-10 mx-auto mb-2" />
         <h1 className="font-semibold tracking-wide">
@@ -80,7 +80,7 @@ function VerifyPage() {
 
       <main className="max-w-4xl mx-auto px-6 py-12 space-y-12">
 
-        {/* VERIFIED BADGE */}
+        
         <div className="flex items-center justify-center gap-3">
           <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white text-xl font-bold">
             ✓
@@ -90,7 +90,7 @@ function VerifyPage() {
           </span>
         </div>
 
-        {/* CERTIFICATE IMAGE */}
+        
         <div className="flex flex-col items-center">
           <img
             src={data.certificate_url}
@@ -102,7 +102,7 @@ function VerifyPage() {
           </p>
         </div>
 
-        {/* ISSUANCE DETAILS */}
+        
         <section className="bg-white p-5 rounded-lg shadow border border-orange-200">
           <h3 className="text-orange-500 uppercase text-sm font-semibold mb-4">
             Issuance Details
@@ -113,7 +113,11 @@ function VerifyPage() {
               <p className="text-xs text-gray-500 uppercase tracking-wider font-medium">Issued By</p>
               <div className="flex items-center gap-2">
                 <p className="font-semibold text-gray-800 text-sm">{data.issuer}</p>
-                <span className="bg-green-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">✓</span>
+                <span className="bg-blue-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3">
+                    <path fillRule="evenodd" d="M10 15l-3.5-3.5 1.414-1.414L10 12.172l5.086-5.086 1.414 1.414L10 15z" clipRule="evenodd" />
+                  </svg>
+                </span>
               </div>
             </div>
             <Detail label="Issue Date" value={formatDate(data.issue_date)} />
@@ -142,7 +146,7 @@ function VerifyPage() {
           <div className="flex flex-col md:flex-row md:justify-between items-center gap-4">
             <div className="text-center">
               <h3 className="text-orange-500 uppercase text-sm font-semibold mb-3">
-                Share Certificate
+                Celebrate your win with the world
               </h3>
               <div className="flex justify-center gap-6 items-center">
                 <img
@@ -196,7 +200,7 @@ function VerifyPage() {
                   onClick={handleAddToLinkedInProfile}
                   className="border border-[#0A66C2] text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white font-semibold py-2 px-6 rounded-lg text-sm"
                 >
-                  Add to Linked In Profile
+                  + Add to LinkedIn Profile
                 </button>
               </div>
             </div>
@@ -211,6 +215,7 @@ function VerifyPage() {
           >
             Validate Certificate
           </button>
+          <p className="mt-2 text-blue-600 text-sm">innoknowvex.in</p>
         </section>
 
       </main>
